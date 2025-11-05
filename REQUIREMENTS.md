@@ -1,33 +1,103 @@
 # Requirements untuk Rebuild Monitoring Stack
 
-**Document Version:** 1.0
+**Document Version:** 1.1
 **Last Updated:** 2025-11-05
 **Purpose:** Checklist lengkap untuk rebuild biznetgio-webinar-monitoring dari awal
 
 ---
 
-## 📋 Quick Checklist
+## 🚀 Deployment Scenarios
+
+### Recommended: 2 VM Setup (Production-Lite)
+**Best for:** Production-lite, Development, Webinar Demo
+
+✅ **See detailed guide:** [`DEPLOYMENT_2VM.md`](DEPLOYMENT_2VM.md)
+
+```
+VM1: Monitoring Server (Prometheus + Grafana)
+VM2: Kubernetes Server (K3s + kube-prometheus-stack)
+
+Cost: ~Rp 300,000 - 400,000/bulan
+Setup Time: 4-6 hours
+```
+
+**Advantages:**
+- ✅ Separation of concerns (monitoring vs workload)
+- ✅ Better resource management
+- ✅ Easier to scale independently
+- ✅ Production-ready architecture
+
+---
+
+### Alternative Scenarios
+
+**Option 1: Single VM All-in-One** (Testing/Demo Only)
+```
+1 VM (4 vCPU, 8 GB RAM, 100 GB disk)
+- K3s + Prometheus + Grafana
+Cost: ~Rp 200,000/bulan
+⚠️ Not recommended for production (single point of failure)
+```
+
+**Option 2: Existing Kubernetes Cluster**
+```
+1 VM for Monitoring Server only
+- Connect to your existing K8s cluster
+Cost: ~Rp 150,000 - 200,000/bulan
+✅ Ideal if you already have K8s infrastructure
+```
+
+**Option 3: Full Production Setup** (5+ VMs)
+```
+1 VM: Monitoring Server (HA)
+3-4 VMs: Kubernetes Cluster (multi-node HA)
+Cost: ~Rp 800,000 - 1,500,000/bulan
+✅ Enterprise-grade with high availability
+```
+
+---
+
+## 📋 Quick Checklist (2 VM Setup)
 
 ```
 Infrastructure:
-☐ 1x Ubuntu 22.04 Server (Monitoring Server)
-☐ 1x Kubernetes Cluster (Target monitoring)
-☐ Network connectivity antar komponen
+☐ VM1: Ubuntu 22.04 Server (Monitoring Server)
+   - 2 vCPU, 4 GB RAM, 60 GB disk minimum
+   - Public IP untuk akses Grafana
+   - Private IP untuk komunikasi dengan K8s
+☐ VM2: Ubuntu 22.04 Server (Kubernetes Server)
+   - 2 vCPU, 4 GB RAM, 60 GB disk minimum
+   - Public/Private IP
+☐ Network connectivity: VM2 → VM1 port 9090
 
 Akses:
-☐ Root/sudo access ke monitoring server
-☐ Cluster admin access ke Kubernetes
-☐ SSH key untuk remote access
+☐ Root/sudo access ke kedua VM
+☐ SSH key configured
+☐ Password manager untuk store credentials
 
-Software:
-☐ kubectl (configured)
-☐ helm 3.x
-☐ curl, wget, tar
+Software (VM1):
+☐ Prometheus v2.53.4
+☐ Grafana latest
+☐ curl, wget, tar, vim
+
+Software (VM2):
+☐ K3s (installed via script)
+☐ Helm 3.x
+☐ kubectl (via k3s)
 
 Persiapan:
+☐ Strong passwords generated (Prometheus, Grafana)
+☐ Bcrypt hash created untuk Prometheus auth
 ☐ Domain/DNS (optional, untuk TLS)
-☐ Credentials yang kuat
-☐ Backup storage location (untuk backup strategy)
+☐ Firewall rules planned
+
+Time Required:
+☐ Phase 1: Provisioning (30 min)
+☐ Phase 2: VM1 Setup (2-3 hours)
+☐ Phase 3: VM2 Setup (2-3 hours)
+☐ Phase 4: Dashboard Import (30 min)
+──────────────────────────────
+Total: 4-6 hours
 ```
 
 ---
