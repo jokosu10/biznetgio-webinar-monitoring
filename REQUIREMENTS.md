@@ -31,7 +31,32 @@ Setup Time: 4-6 hours
 
 ### Alternative Scenarios
 
-**Option 1: Single VM All-in-One** (Testing/Demo Only)
+**Option 1: Budget Setup** 💰 (1 New + 1 Existing VM)
+**Best for:** Utilize existing VPS, Save cost
+```
+VM1 (NEW): 4 vCPU, 4GB RAM → Monitoring Server
+VM2 (OLD): 1 vCPU, 2GB RAM → Kubernetes (resource-limited)
+
+Cost: ~Rp 200,000 - 250,000/bulan (50% savings!)
+Setup Time: 4-6 hours
+```
+
+✅ **See detailed guide:** [`DEPLOYMENT_UNBALANCED.md`](DEPLOYMENT_UNBALANCED.md)
+
+**Advantages:**
+- 💰 Hemat 50% vs 2 VM baru
+- ♻️ Memanfaatkan VPS lama yang sudah ada
+- ✅ VM1 comfortable untuk queries
+- ⚠️ VM2 tight tapi workable untuk monitoring saja
+
+**Limitations:**
+- ⚠️ Cannot deploy apps on VM2 K8s
+- ⚠️ High resource usage on VM2 (normal)
+- ⚠️ Reduced monitoring resolution
+
+---
+
+**Option 2: Single VM All-in-One** (Testing/Demo Only)
 ```
 1 VM (4 vCPU, 8 GB RAM, 100 GB disk)
 - K3s + Prometheus + Grafana
@@ -39,7 +64,7 @@ Cost: ~Rp 200,000/bulan
 ⚠️ Not recommended for production (single point of failure)
 ```
 
-**Option 2: Existing Kubernetes Cluster**
+**Option 3: Existing Kubernetes Cluster**
 ```
 1 VM for Monitoring Server only
 - Connect to your existing K8s cluster
@@ -47,7 +72,7 @@ Cost: ~Rp 150,000 - 200,000/bulan
 ✅ Ideal if you already have K8s infrastructure
 ```
 
-**Option 3: Full Production Setup** (5+ VMs)
+**Option 4: Full Production Setup** (5+ VMs)
 ```
 1 VM: Monitoring Server (HA)
 3-4 VMs: Kubernetes Cluster (multi-node HA)
