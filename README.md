@@ -1,8 +1,52 @@
 # biznetgio-webinar-monitoring
 
+Monitoring stack untuk Kubernetes menggunakan Prometheus dan Grafana dengan arsitektur remote write.
+
+---
+
+## 📚 Documentation
+
+### Quick Start Guides
+
+**👉 Recommended:** [**2 VM Deployment Guide**](DEPLOYMENT_2VM.md)
+- Step-by-step lengkap untuk setup 2 VM
+- VM1: Monitoring Server (Prometheus + Grafana)
+- VM2: Kubernetes dengan K3s
+- Setup time: 4-6 hours
+- Cost: ~Rp 300-400k/bulan
+
+**📋 Requirements:** [Requirements Documentation](REQUIREMENTS.md)
+- Infrastructure specifications
+- Network requirements
+- Software prerequisites
+- All deployment scenarios
+
+**🔒 Security Review:** [Code Review](CODE_REVIEW.md)
+- Security best practices
+- Configuration improvements
+- Troubleshooting guide
+- 18 identified issues dengan solusi
+
+---
+
+## 🏗️ Architecture Overview
+
+### Deployment Scenarios
+
+| Scenario | VMs | Use Case | Cost/Month | Guide |
+|----------|-----|----------|------------|-------|
+| **2 VM Setup** ⭐ | 2 | Production-lite, Webinar | Rp 300-400k | [DEPLOYMENT_2VM.md](DEPLOYMENT_2VM.md) |
+| Existing K8s | 1 | Already have K8s cluster | Rp 150-200k | This README |
+| Single VM | 1 | Testing/Demo only | Rp 200k | Not recommended |
+| Full Production | 5+ | Enterprise HA setup | Rp 800k-1.5jt | [REQUIREMENTS.md](REQUIREMENTS.md) |
+
+---
+
 ## Topology
 kube-prometheus-stack + remote_write Architecture
 <img src="images/topology/topology-all.drawio.png" alt="topology"/>
+
+---
 
 ## Preparation Server
 Neo Lite VPS
