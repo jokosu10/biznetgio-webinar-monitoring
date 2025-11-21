@@ -35,8 +35,10 @@ Monitoring stack untuk Kubernetes menggunakan Prometheus dan Grafana dengan arsi
 
 | Scenario | VMs | Use Case | Cost/Month | Guide |
 |----------|-----|----------|------------|-------|
-| **2 VM Setup** ⭐ | 2 equal | Production-lite, Webinar | Rp 300-400k | [DEPLOYMENT_2VM.md](DEPLOYMENT_2VM.md) |
+| **2 VM Setup** ⭐ | 2 equal (same cloud) | Production-lite, Webinar | Rp 300-400k | [DEPLOYMENT_2VM.md](DEPLOYMENT_2VM.md) |
 | **Budget Setup** 💰 | 1 new + 1 old | Development, Learning | Rp 200-250k | [DEPLOYMENT_UNBALANCED.md](DEPLOYMENT_UNBALANCED.md) |
+| **Cross-Cloud** 🌐 | 2 (different clouds) | VM2 no public IP | Varies | [DEPLOYMENT_CROSS_CLOUD.md](DEPLOYMENT_CROSS_CLOUD.md) |
+| **Cloudflare Tunnel** 🔒 | 2 + CF Tunnel | Max security, Zero-trust | Varies | [DEPLOYMENT_CLOUDFLARE_TUNNEL.md](DEPLOYMENT_CLOUDFLARE_TUNNEL.md) |
 | Existing K8s | 1 | Already have K8s cluster | Rp 150-200k | This README |
 | Single VM | 1 | Testing/Demo only | Rp 200k | Not recommended |
 | Full Production | 5+ | Enterprise HA setup | Rp 800k-1.5jt | [REQUIREMENTS.md](REQUIREMENTS.md) |
