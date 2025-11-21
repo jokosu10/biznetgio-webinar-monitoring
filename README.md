@@ -4,44 +4,46 @@ Monitoring stack untuk Kubernetes menggunakan Prometheus dan Grafana dengan arsi
 
 ---
 
-## 📚 Documentation
+## 📚 Complete Documentation
 
-### Quick Start Guides
+**👉 Start Here:** [**📖 Documentation Index (docs/)**](docs/)
 
-**👉 Recommended:** [**2 VM Deployment Guide**](DEPLOYMENT_2VM.md)
-- Step-by-step lengkap untuk setup 2 VM
-- VM1: Monitoring Server (Prometheus + Grafana)
-- VM2: Kubernetes dengan K3s
-- Setup time: 4-6 hours
-- Cost: ~Rp 300-400k/bulan
+All guides, tutorials, and references are organized in the `docs/` folder.
 
-**📋 Requirements:** [Requirements Documentation](REQUIREMENTS.md)
-- Infrastructure specifications
-- Network requirements
-- Software prerequisites
-- All deployment scenarios
+---
 
-**🔒 Security Review:** [Code Review](CODE_REVIEW.md)
-- Security best practices
-- Configuration improvements
-- Troubleshooting guide
-- 18 identified issues dengan solusi
+## 🚀 Quick Start
+
+### Choose Your Deployment Scenario:
+
+| Scenario | Best For | Cost/Month | Guide |
+|----------|----------|------------|-------|
+| **🌟 2 VM Setup** | Standard deployment | Rp 300-400k | [Guide](docs/deployment-guides/DEPLOYMENT_2VM.md) |
+| **💰 Budget Setup** | Save 50% cost | Rp 200-250k | [Guide](docs/deployment-guides/DEPLOYMENT_UNBALANCED.md) |
+| **🌐 Cross-Cloud** | Different cloud providers | Varies | [Guide](docs/deployment-guides/DEPLOYMENT_CROSS_CLOUD.md) |
+| **🔒 Cloudflare Tunnel** | Maximum security | Varies | [Guide](docs/deployment-guides/DEPLOYMENT_CLOUDFLARE_TUNNEL.md) |
+
+**Not sure which to choose?** → [Read the decision tree](docs/#-decision-tree)
+
+---
+
+## 📖 Reference Documentation
+
+- **[Requirements](docs/reference/REQUIREMENTS.md)** - Infrastructure & software requirements
+- **[Code Review](docs/reference/CODE_REVIEW.md)** - Security review & best practices
 
 ---
 
 ## 🏗️ Architecture Overview
 
-### Deployment Scenarios
+### Deployment Scenarios Comparison
 
-| Scenario | VMs | Use Case | Cost/Month | Guide |
-|----------|-----|----------|------------|-------|
-| **2 VM Setup** ⭐ | 2 equal (same cloud) | Production-lite, Webinar | Rp 300-400k | [DEPLOYMENT_2VM.md](DEPLOYMENT_2VM.md) |
-| **Budget Setup** 💰 | 1 new + 1 old | Development, Learning | Rp 200-250k | [DEPLOYMENT_UNBALANCED.md](DEPLOYMENT_UNBALANCED.md) |
-| **Cross-Cloud** 🌐 | 2 (different clouds) | VM2 no public IP | Varies | [DEPLOYMENT_CROSS_CLOUD.md](DEPLOYMENT_CROSS_CLOUD.md) |
-| **Cloudflare Tunnel** 🔒 | 2 + CF Tunnel | Max security, Zero-trust | Varies | [DEPLOYMENT_CLOUDFLARE_TUNNEL.md](DEPLOYMENT_CLOUDFLARE_TUNNEL.md) |
-| Existing K8s | 1 | Already have K8s cluster | Rp 150-200k | This README |
-| Single VM | 1 | Testing/Demo only | Rp 200k | Not recommended |
-| Full Production | 5+ | Enterprise HA setup | Rp 800k-1.5jt | [REQUIREMENTS.md](REQUIREMENTS.md) |
+| Scenario | VMs | Use Case | Security | Complexity |
+|----------|-----|----------|----------|------------|
+| **2 VM Setup** ⭐ | 2 equal (same cloud) | Production-lite, Webinar | ⭐⭐⭐ | ⭐⭐ |
+| **Budget Setup** 💰 | 1 new + 1 old | Development, Learning | ⭐⭐⭐ | ⭐⭐ |
+| **Cross-Cloud** 🌐 | 2 (different clouds) | VM2 no public IP | ⭐⭐⭐ | ⭐⭐ |
+| **Cloudflare Tunnel** 🔒 | 2 + CF Tunnel | Max security, Zero-trust | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ |
 
 ---
 
